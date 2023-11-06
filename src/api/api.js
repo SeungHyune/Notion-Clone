@@ -10,11 +10,11 @@ export const request = async (url, options={}) => {
             }
         });
         
-        if(res.ok) {
-            return await res.json();
+        if(res.ok === false) {
+            throw new Error('API 호출 에러');
         }
 
-        throw new Error('API 호출 에러');
+        return await res.json();
     } catch(e) {
         console.log(e);
     }
